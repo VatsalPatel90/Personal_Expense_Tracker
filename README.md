@@ -1,6 +1,8 @@
 # Personal Expense Tracker
 
-A Python-based Personal Expense Tracker that helps users manage, organize, and track their daily expenses. The application uses JSON for storing expense records so that data remains available even after closing the program.
+A Python-based Personal Expense Tracker that helps users manage, organize, and track their daily expenses.
+
+The application uses JSON for storing expense records, allowing users to access their saved data even after closing and restarting the program.
 
 ## Features
 
@@ -27,10 +29,12 @@ A Python-based Personal Expense Tracker that helps users manage, organize, and t
 Personal_Expense_Tracker/
 │
 ├── main.py
-├── expenses.json
 ├── expense_practice.py
+├── .gitignore
 └── README.md
 ```
+
+**Note:** `expenses.json` is generated locally when the application saves expense records. It is excluded from GitHub using `.gitignore`.
 
 ## Requirements
 
@@ -41,21 +45,21 @@ Personal_Expense_Tracker/
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/VatsalPatel90/Personal_Expense_Tracker.git
-   ```
+```bash
+git clone https://github.com/VatsalPatel90/Personal_Expense_Tracker.git
+```
 
 2. Open the project folder:
 
-   ```bash
-   cd Personal_Expense_Tracker
-   ```
+```bash
+cd Personal_Expense_Tracker
+```
 
 3. Run the application:
 
-   ```bash
-   python3 main.py
-   ```
+```bash
+python3 main.py
+```
 
 ## Application Menu
 
@@ -71,7 +75,7 @@ The application provides the following options:
 
 ## Data Storage
 
-Expense records are stored in `expenses.json` using JSON format.
+Expense records are stored locally in `expenses.json` using JSON format.
 
 Each expense contains:
 
@@ -80,7 +84,7 @@ Each expense contains:
 - Description
 - Date
 
-The application loads previously saved expenses when it starts and saves new changes to the JSON file.
+The application loads previously saved expenses when it starts and saves changes to the JSON file.
 
 ## Learning Outcomes
 
