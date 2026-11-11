@@ -1,13 +1,22 @@
 import json
 from datetime import date
+import os
+
+# GET THE CURRENT PROJECT FOLDER PATH
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# JSON FILE PATH
+FILE_PATH = os.path.join(BASE_DIR, "expenses.json")
+
 
 print("================================")
 print("     PERSONAL EXPENSE TRACKER")
 print("================================")
 
-# Load existing expenses from JSON file
+
+# LOAD EXISTING EXPENSES FROM JSON FILE
 try:
-    with open("expenses.json", "r") as file:
+    with open(FILE_PATH, "r") as file:
         expenses = json.load(file)
 
 except FileNotFoundError:
@@ -25,6 +34,7 @@ while True:
     print("7. Exit")
 
     choice = input("Enter your choice (1-7): ")
+
 
     # ADD EXPENSE
     if choice == "1":
@@ -60,6 +70,7 @@ while True:
 
         try:
             amount = float(input("Enter amount: "))
+
         except ValueError:
             print("Please enter a valid number.")
             continue
@@ -69,6 +80,7 @@ while True:
             continue
 
         description = input("Enter description: ")
+
         if description.strip() == "":
             print("Description cannot be empty!")
             continue
@@ -82,10 +94,12 @@ while True:
 
         expenses.append(expense)
 
-        with open("expenses.json", "w") as file:
+        # SAVE EXPENSES TO THE SAME JSON FILE
+        with open(FILE_PATH, "w") as file:
             json.dump(expenses, file, indent=4)
 
         print("\nExpense added successfully!")
+
 
     # VIEW EXPENSES
     elif choice == "2":
@@ -99,6 +113,7 @@ while True:
             total = 0
 
             for expense in expenses:
+
                 print("\nCategory:", expense["category"])
                 print("Amount:", expense["amount"])
                 print("Description:", expense["description"])
@@ -109,6 +124,7 @@ while True:
                 total = total + expense["amount"]
 
             print("\nTotal Expenses:", total)
+
 
     # SEARCH EXPENSES
     elif choice == "3":
@@ -132,6 +148,7 @@ while True:
 
         if found == False:
             print("No expenses found in this category.")
+
 
     # FILTER EXPENSES
     elif choice == "4":
@@ -183,6 +200,7 @@ while True:
         if found == False:
             print("No expenses found in this category.")
 
+
     # MONTHLY EXPENSE SUMMARY
     elif choice == "5":
 
@@ -203,9 +221,7 @@ while True:
 
         print("Total Monthly Expenses:", monthly_total)
 
-    
-    # DELETE MULTIPLE EXPENSES
-    
+
     # DELETE MULTIPLE EXPENSES
     elif choice == "6":
 
@@ -282,7 +298,8 @@ while True:
 
                     deleted_count = deleted_count + 1
 
-                with open("expenses.json", "w") as file:
+                # SAVE UPDATED EXPENSES TO THE SAME JSON FILE
+                with open(FILE_PATH, "w") as file:
                     json.dump(expenses, file, indent=4)
 
                 print(deleted_count, "expenses deleted successfully!")
@@ -290,13 +307,13 @@ while True:
             else:
                 print("Delete operation cancelled.")
 
+
     # EXIT
     elif choice == "7":
 
         print("\nThank you for using Personal Expense Tracker!")
         break
 
+
     else:
         print("Invalid choice! Please select between 1 and 7.")
-
-    
